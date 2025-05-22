@@ -23,10 +23,21 @@ cmp.setup({
   },
 })
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Setup LSP for Python using pyright
 lspconfig.pyright.setup({
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  capabilities = capabilities,
 })
+-- Setiup LSP for C++ 
 lspconfig.clangd.setup({
-capabilities = require("cmp_nvim_lsp").default_capabilities(),
+capabilities = capabilities, 
 })
+-- Setup LSP  ypescript lsp
+lspconfig.ts_ls.setup({
+capabilities = capabilities,
+})
+-- Setup LSP for lua_ls 
+lspconfig.lua_ls.setup({
+    capabilities = capabilities,
+})
+
