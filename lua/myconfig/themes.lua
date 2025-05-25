@@ -29,7 +29,7 @@ require("nvim-tree").setup({
 local status, web_devicons = pcall(require, "nvim-web-devicons")
 if status then
   web_devicons.setup({
-    default = true, -- Enable default icons for unsupported filetypes
+    default = true, -- Enable default icons for unsupported file types
     override = {
       py = {
         icon = "", -- Python icon
@@ -49,12 +49,20 @@ else
   print("Failed to load nvim-web-devicons")
 end
 
+
+
 -- Apply the VSCode Theme
-local theme_ok, _ = pcall(vim.cmd, "colorscheme vscode")
-if not theme_ok then
-  print("Failed to load colorscheme 'vscode'. Make sure the plugin is installed.")
+-- Set dark mode
+vim.o.background = "dark"
+
+-- Attempt to load preferred theme
+local ok, _ = pcall(vim.cmd, "colorscheme vscode")
+if not ok then
+  print("Failed to load 'vscode', falling back to 'habamax'")
+  pcall(vim.cmd, "colorscheme habamax")
 end
-vim.o.background = "dark" -- Set the theme to dark mode
+
+
 
 -- Setup Lualine (Status Line)
 require("lualine").setup({
@@ -81,3 +89,4 @@ require("lualine").setup({
     lualine_z = {},
   },
 })
+

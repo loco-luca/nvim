@@ -1,16 +1,20 @@
 -- General Vim Configurations
 
-vim.cmd("syntax enable")
-vim.o.termguicolors = true
+vim.cmd("syntax on")
+vim.opt.termguicolors = true
 
 -- Basic editor settings
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.clipboard = "unnamedplus"
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.cindent = true
+vim.opt.mouse = "a"
+vim.opt.wrap = false
+vim.opt.spell = true
 
 -- Load Packer and define plugins
 vim.cmd([[packadd packer.nvim]])
@@ -18,7 +22,7 @@ vim.cmd([[packadd packer.nvim]])
 
 require("packer").startup(function(use)
   for _, plugin in ipairs(require("myconfig.plugins")) do
-    use(plugin) 
+    use(plugin)
   end
 end)
 
