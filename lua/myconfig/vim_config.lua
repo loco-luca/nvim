@@ -1,6 +1,7 @@
 -- General Vim Configurations
 vim.cmd("syntax on")
 vim.opt.termguicolors = true
+vim.g.mapleader = " "
 
 -- Basic editor settings
 vim.opt.number = true
@@ -37,6 +38,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = false -- Use tabs instead of spaces
     vim.opt_local.smartindent = true
     vim.opt_local.cindent = true
+
   end,
 })
 

@@ -3,6 +3,22 @@ local lspconfig = require("lspconfig")
 local cmp = require("cmp")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+local on_attach = function(client, bufnr)
+  -- Enable omnifunc for completion
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  if client.server_capabilities.documentFormattingProvider then
+    -- Async format on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ async = true })
+      end,
+    })
+
+  end
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -11,7 +27,7 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -28,6 +44,7 @@ local servers = { "lua_ls", "pyright", "clangd" }
 for _, server in ipairs(servers) do
   lspconfig[server].setup({
     capabilities = capabilities,
+    on_attach = on_attach,
   })
 end
 
