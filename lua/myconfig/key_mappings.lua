@@ -14,3 +14,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope search  through git files' })
+-- Diagnostic Commands
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Diagnostic open float window ' })
+vim.keymap.set('n', '<leader>ne', vim.diagnostic.goto_next, { desc = 'Diagnostic go to the next error' })
+vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = 'Diagnostic go to the previous error' })

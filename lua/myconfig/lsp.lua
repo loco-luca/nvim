@@ -41,11 +41,10 @@ cmp.setup({
     },
 })
 
-local servers = { "lua_ls", "pyright", "clangd" }
+local servers = { "lua_ls", "clangd" }
 for _, server in ipairs(servers) do
     lspconfig[server].setup({
         capabilities = capabilities,
         on_attach = on_attach,
     })
 end
-
