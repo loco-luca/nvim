@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Spell only for writing-related filetypes
+-- Spell only for writing-related file types
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "markdown", "text", "gitcommit" },
     callback = function()

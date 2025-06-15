@@ -6,4 +6,5 @@ return function()
     require("myconfig.themes")
     require("myconfig.lsp")
     require("myconfig.colorscheme")
+    require("myconfig.debugger")
 end
