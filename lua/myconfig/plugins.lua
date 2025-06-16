@@ -48,6 +48,14 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
+        config = function()
+            require('nvim-treesitter.config').setup {
+                ensure_installed = { "mojo" },
+                highlighting = {
+                    enable = true,
+                },
+            }
+        end,
     },
 
     -- File explorer
@@ -56,7 +64,7 @@ return {
         requires = { "nvim-tree/nvim-web-devicons" },
     },
 
-    -- Statusline
+    -- Status line
     {
         "nvim-lualine/lualine.nvim",
         requires = { "nvim-tree/nvim-web-devicons" },
