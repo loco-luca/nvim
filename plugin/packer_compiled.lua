@@ -141,7 +141,6 @@ _G.packer_plugins = {
     url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-dap-ui"] = {
-    config = { "\27LJ\2\n\30\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\topen\31\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\nclose\31\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\ncloseÚ\1\1\0\4\0\14\0\0256\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\2\3\0B\2\1\0019\2\4\0019\2\5\0029\2\6\0023\3\b\0=\3\a\0029\2\4\0019\2\t\0029\2\n\0023\3\v\0=\3\a\0029\2\4\0019\2\t\0029\2\f\0023\3\r\0=\3\a\0022\0\0€K\0\1\0\0\17event_exited\0\21event_terminated\vbefore\0\17dapui_config\22event_initialized\nafter\14listeners\nsetup\bdap\ndapui\frequire\0" },
     loaded = true,
     path = "/Users/luistalhado/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
@@ -199,10 +198,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-dap-ui
-time([[Config for nvim-dap-ui]], true)
-try_loadstring("\27LJ\2\n\30\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\topen\31\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\nclose\31\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0À\ncloseÚ\1\1\0\4\0\14\0\0256\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\2\3\0B\2\1\0019\2\4\0019\2\5\0029\2\6\0023\3\b\0=\3\a\0029\2\4\0019\2\t\0029\2\n\0023\3\v\0=\3\a\0029\2\4\0019\2\t\0029\2\f\0023\3\r\0=\3\a\0022\0\0€K\0\1\0\0\17event_exited\0\21event_terminated\vbefore\0\17dapui_config\22event_initialized\nafter\14listeners\nsetup\bdap\ndapui\frequire\0", "config", "nvim-dap-ui")
-time([[Config for nvim-dap-ui]], false)
 -- Config for: mason.nvim
 time([[Config for mason.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nmason\frequire\0", "config", "mason.nvim")
