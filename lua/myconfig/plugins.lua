@@ -1,7 +1,7 @@
 --[[
 This setup ensures you don’t need to manually clone each plugin repository.
 Just run :PackerSync after updating this list.
-]]
+--]]
 
 return {
     -- Packer manages itself
@@ -48,14 +48,6 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
-        config = function()
-            require('nvim-treesitter.config').setup {
-                ensure_installed = { "mojo" },
-                highlighting = {
-                    enable = true,
-                },
-            }
-        end,
     },
 
     -- File explorer
@@ -80,6 +72,7 @@ return {
         "catppuccin/nvim",
         as = "catppuccin",
     },
+    ---
     -- DAP UI
     {
         --
@@ -90,21 +83,5 @@ return {
 
         "rcarriga/nvim-dap-ui",
         requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-        config = function()
-            local dapui = require("dapui")
-            local dap = require("dap")
-
-            dapui.setup()
-
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-        end,
     }
 }
