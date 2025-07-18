@@ -83,5 +83,15 @@ return {
 
         "rcarriga/nvim-dap-ui",
         requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    }
+    },
+    {
+        "akinsho/flutter-tools.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("flutter-tools").setup {}
+        end,
+    },
+    -- Dart syntax highlighting
+    "dart-lang/dart-vim-plugin",
+
 }

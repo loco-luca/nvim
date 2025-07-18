@@ -53,6 +53,11 @@ cmp.setup({
         { name = "luasnip" },  -- Snippets
     },
 })
+lspconfig.dartls.setup {
+    cmd = { "dart", "language-server", "--protocol=lsp" },
+    root_dir = lspconfig.util.root_pattern("pubspec.yaml"),
+}
+
 
 -- Define which LSP servers to set up
 local servers = { "lua_ls", "clangd" }
