@@ -19,6 +19,8 @@ vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.swapfile = false
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 
 -- Language-specific Auto Commands

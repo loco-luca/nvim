@@ -8,5 +8,4 @@ return function()
     require("myconfig.lsp")
     require("myconfig.colorscheme")
     require("myconfig.status_line")
-    require("myconfig.debugger")
 end

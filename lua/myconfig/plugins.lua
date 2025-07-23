@@ -72,18 +72,6 @@ return {
         "catppuccin/nvim",
         as = "catppuccin",
     },
-    ---
-    -- DAP UI
-    {
-        --
-        -- -- Debug Adapter Protocol
-        -- "mfussenegger/nvim-dap",
-        -- "nvim-neotest/nvim-nio", -- required by dap-ui on Neovim 0.9+
-        --
-
-        "rcarriga/nvim-dap-ui",
-        requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    },
     {
         "akinsho/flutter-tools.nvim",
         requires = "nvim-lua/plenary.nvim",
