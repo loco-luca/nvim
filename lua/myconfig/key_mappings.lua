@@ -24,9 +24,17 @@ vim.keymap.set("n", "<leader>nf", function()
     end)
 end, { desc = "Create new file" })
 
--- === Diagnostics ===
+-- === Diagnostics for error highlighting ===
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Diagnostic open float window ' })
 vim.keymap.set('n', '<leader>ne', vim.diagnostic.goto_next, { desc = 'Diagnostic go to the next error' })
 vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = 'Diagnostic go to the previous error' })
 
 
+-- === Copilot keybindings ===
+vim.keymap.set('n', '<leader>cc', ':Copilot chat<CR>', { noremap = true, silent = true, desc = 'Open Copilot chat' })
+vim.keymap.set('n', '<leader>cp', ':Copilot panel<CR>', { noremap = true, silent = true, desc = 'Open Copilot panel' })
+vim.keymap.set('n', '<leader>ci', ':Copilot info<CR>', { noremap = true, silent = true, desc = 'Show Copilot info' })
+vim.keymap.set('n', '<leader>cs', ':Copilot status<CR>', { noremap = true, silent = true, desc = 'Show Copilot status' })
+vim.keymap.set('n', '<leader>ct', ':Copilot toggle<CR>', { noremap = true, silent = true, desc = 'Toggle Copilot' })
+vim.keymap.set('n', '<leader>ca', ':Copilot accept<CR>',
+    { noremap = true, silent = true, desc = 'Accept Copilot suggestion' })

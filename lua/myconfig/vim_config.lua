@@ -23,6 +23,9 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 
+
+-- Enable LSP file watching globally
+require("vim.lsp._watchfiles")._watchfunc = require("vim.lsp._watchfiles").watchman_watch
 -- Language-specific Auto Commands
 
 -- Python
