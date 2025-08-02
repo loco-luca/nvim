@@ -130,24 +130,7 @@ _G.packer_plugins = {
     path = "/Users/luistalhado/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["mason-lspconfig.nvim"] = {
-    config = { "\27LJ\2\nš\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\21ensure_installed\1\0\2\21ensure_installed\0\27automatic_installation\2\1\3\0\0\vlua_ls\fpyright\nsetup\20mason-lspconfig\frequire\0" },
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/Users/luistalhado/.local/share/nvim/site/pack/packer/opt/mason-lspconfig.nvim",
-    url = "https://github.com/williamboman/mason-lspconfig.nvim"
-  },
-  ["mason.nvim"] = {
-    after = { "mason-lspconfig.nvim" },
-    config = { "\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nmason\frequire\0" },
-    loaded = true,
-    only_config = true,
-    path = "/Users/luistalhado/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/williamboman/mason.nvim"
-  },
   ["none-ls.nvim"] = {
-    config = { "\27LJ\2\n \1\0\0\6\0\n\0\0176\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\b\0004\4\3\0009\5\3\0009\5\4\0059\5\5\5>\5\1\0049\5\3\0009\5\6\0059\5\a\5>\5\2\4=\4\t\3B\1\2\1K\0\1\0\fsources\1\0\1\fsources\0\truff\16diagnostics\nblack\15formatting\rbuiltins\nsetup\fnull-ls\frequire\0" },
     loaded = true,
     path = "/Users/luistalhado/.local/share/nvim/site/pack/packer/start/none-ls.nvim",
     url = "https://github.com/nvimtools/none-ls.nvim"
@@ -158,6 +141,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
+    config = { "\27LJ\2\nk\0\0\4\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\1\2\0009\1\3\0014\3\0\0B\1\2\0019\1\4\0009\1\3\0014\3\0\0B\1\2\1K\0\1\0\25jedi_language_server\nsetup\vlua_ls\14lspconfig\frequire\0" },
     loaded = true,
     path = "/Users/luistalhado/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
@@ -205,26 +189,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: none-ls.nvim
-time([[Config for none-ls.nvim]], true)
-try_loadstring("\27LJ\2\n \1\0\0\6\0\n\0\0176\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\b\0004\4\3\0009\5\3\0009\5\4\0059\5\5\5>\5\1\0049\5\3\0009\5\6\0059\5\a\5>\5\2\4=\4\t\3B\1\2\1K\0\1\0\fsources\1\0\1\fsources\0\truff\16diagnostics\nblack\15formatting\rbuiltins\nsetup\fnull-ls\frequire\0", "config", "none-ls.nvim")
-time([[Config for none-ls.nvim]], false)
 -- Config for: flutter-tools.nvim
 time([[Config for flutter-tools.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18flutter-tools\frequire\0", "config", "flutter-tools.nvim")
 time([[Config for flutter-tools.nvim]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nmason\frequire\0", "config", "mason.nvim")
-time([[Config for mason.nvim]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd mason-lspconfig.nvim ]]
-
--- Config for: mason-lspconfig.nvim
-try_loadstring("\27LJ\2\nš\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\21ensure_installed\1\0\2\21ensure_installed\0\27automatic_installation\2\1\3\0\0\vlua_ls\fpyright\nsetup\20mason-lspconfig\frequire\0", "config", "mason-lspconfig.nvim")
-
-time([[Sequenced loading]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\nk\0\0\4\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\1\2\0009\1\3\0014\3\0\0B\1\2\0019\1\4\0009\1\3\0014\3\0\0B\1\2\1K\0\1\0\25jedi_language_server\nsetup\vlua_ls\14lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

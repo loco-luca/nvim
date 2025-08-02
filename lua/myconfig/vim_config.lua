@@ -79,12 +79,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.spell = true
     end,
 })
-
--- Load Packer plugin manager and install plugins from your config module
-vim.cmd([[packadd packer.nvim]])
-
-require("packer").startup(function(use)
-    for _, plugin in ipairs(require("myconfig.plugins")) do
-        use(plugin)
-    end
-end)
