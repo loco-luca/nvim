@@ -17,18 +17,28 @@ vim.opt.wrap = false
 vim.opt.spell = true
 vim.opt.undofile = true
 vim.opt.swapfile = false
-vim.opt.undofile = true
-vim.opt.swapfile = false
+
+-- Disable unnecessary providers
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+-- Append FZF to runtime path (adjust the path if necessary)
+vim.opt.rtp:append({ "/opt/homebrew/opt/fzf" })
 
+-- Autoformat Python files on save synchronously
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.py",
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end,
+})
 
--- Enable LSP file watching globally
+-- Enable LSP file watching globally (using watchman)
 require("vim.lsp._watchfiles")._watchfunc = require("vim.lsp._watchfiles").watchman_watch
+
 -- Language-specific Auto Commands
 
--- Python
+-- Python indentation and tabs settings
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
@@ -39,7 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- C / C++
+-- C / C++ indentation and tabs settings
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "c", "cpp" },
     callback = function()
@@ -51,7 +61,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- TypeScript / JavaScript / React
+-- TypeScript / JavaScript / React indentation and tabs settings
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     callback = function()
@@ -62,7 +72,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Spell only for writing-related file types
+-- Enable spell checking for writing-related file types
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "markdown", "text", "gitcommit" },
     callback = function()
@@ -70,7 +80,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Load Packer and define plugins
+-- Load Packer plugin manager and install plugins from your config module
 vim.cmd([[packadd packer.nvim]])
 
 require("packer").startup(function(use)

@@ -1,19 +1,42 @@
 -- Setup Lualine (Status Line)
-require("lualine").setup({
 
+local ok, lualine = pcall(require, "lualine")
+if not ok then return end
+
+-- Optional: GitHub Copilot status in the statusline
+local function copilot_status()
+    local ok, api = pcall(require, "copilot.api")
+    if not ok then return "" end
+
+    local status = api.status.data
+    if status and status.message then
+        return " " .. status.message
+    end
+    return ""
+end
+
+-- Detect current colorscheme or fallback
+local theme = vim.g.colors_name or "auto"
+
+lualine.setup({
     options = {
-        theme = "rose-pine", -- Use any theme for the status line
+        theme = theme,
+        icons_enabled = true,
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
-        icons_enabled = true,
     },
     sections = {
-        lualine_a = { "mode" },                 -- Display mode (e.g., NORMAL, INSERT)
-        lualine_b = { "branch" },               -- Git branch
-        lualine_c = { "filename" },             -- Current file name
-        lualine_x = { "encoding", "filetype" }, -- File encoding and type
-        lualine_y = { "progress" },             -- Progress in the file
-        lualine_z = { "location" },             -- Cursor position
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff" },
+        lualine_c = { "filename" },
+        lualine_x = {
+            { "diagnostics", sources = { "nvim_lsp" } },
+            copilot_status, -- You can remove this if not using Copilot
+            "encoding",
+            "filetype",
+        },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
     },
     inactive_sections = {
         lualine_a = {},
@@ -23,4 +46,6 @@ require("lualine").setup({
         lualine_y = {},
         lualine_z = {},
     },
+    tabline = {},
+    extensions = {},
 })
