@@ -6,8 +6,6 @@ vim.g.mapleader = " "
 -- Basic editor settings
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -31,7 +29,27 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
         vim.lsp.buf.format({ async = false })
     end,
+
 })
+
+-- Format buffer
+vim.keymap.set("n", "<leader>f", function()
+    vim.lsp.buf.format({ async = true })
+end, { noremap = true, silent = true, desc = "Format buffer" })
+
+
+
+-- Keymap to create a new file: opens a new buffer, then prompts for a file name and saves it
+vim.keymap.set("n", "<leader>nf", function()
+    vim.cmd("enew") -- Open a new empty buffer
+    vim.ui.input({ prompt = "New file name: " }, function(input)
+        if input and input ~= "" then
+            -- Write the buffer to the given file name, escaping it safely
+            vim.cmd("write " .. vim.fn.fnameescape(input))
+        end
+    end)
+end, { desc = "Create new file" })
+
 
 -- Enable LSP file watching globally (using watchman)
 require("vim.lsp._watchfiles")._watchfunc = require("vim.lsp._watchfiles").watchman_watch
@@ -42,8 +60,8 @@ require("vim.lsp._watchfiles")._watchfunc = require("vim.lsp._watchfiles").watch
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
-        vim.opt_local.tabstop = 4
-        vim.opt_local.shiftwidth = 4
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
         vim.opt_local.expandtab = true
         vim.opt_local.smartindent = true
     end,
