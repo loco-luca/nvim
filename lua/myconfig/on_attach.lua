@@ -1,23 +1,26 @@
-
 -- on_attach
+
 
 local M = {}
 
--- on_attach function with formatting support and omnifunc
-function M.on_attach(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    if client.supports_method("textDocument/formatting") then
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+function M.on_attach(client, bufnr)
+    if client.supports_method and client:supports_method("textDocument/formatting") then
+        -- Clear existing autocmds in this group for the buffer
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+
+        -- Create autocmd to format on save synchronously
         vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ async = false })
+                vim.lsp.buf.format({ bufnr = bufnr, async = false })
             end,
         })
-        vim.keymap.set("n", "<leader>f", function()
-            vim.lsp.buf.format({ async = true })
-        end, { buffer = bufnr, desc = "LSP Format" })
     end
 end
 
 return M
+

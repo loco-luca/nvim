@@ -1,21 +1,50 @@
-local null_ls = require("null-ls")
-local capabilities = require("myconfig.capabilities").capabilities
-local on_attach = require("myconfig.on_attach").on_attach
+-- local null_ls = require("null-ls")
+-- local capabilities = require("myconfig.capabilities").capabilities
+-- local on_attach = require("myconfig.on_attach").on_attach
+-- --
 --
-
-
-local null_ls = require("null-ls")
-local h = require("null-ls.helpers")
-
-
--- Setup null-ls with formatting and diagnostics sources
-null_ls.setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        sources = {
-                null_ls.builtins.formatting.black,
-                null_ls.builtins.diagnostics.mypy,
-                null_ls.builtins.formatting.clang_format,
-                
-        },
-})
+-- -- Setup null-ls with formatting and diagnostics sources
+-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+--
+-- null_ls.setup({
+--         capabilities = capabilities,
+--         on_attach = function(client, bufnr)
+--                 -- Call your existing on_attach if you want LSP keymaps etc
+--                 on_attach(client, bufnr)
+--
+--                 if client.supports_method and client:supports_method("textDocument/formatting") then
+--                         -- Clear previous autocmds in this group for this buffer to avoid duplicates
+--                         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+--
+--                         -- Create autocmd for formatting on save
+--                         vim.api.nvim_create_autocmd("BufWritePre", {
+--                                 group = augroup,
+--                                 buffer = bufnr,
+--                                 callback = function()
+--                                         vim.lsp.buf.format({ async = false })
+--                                 end,
+--                         })
+--
+--                         -- Map <leader>f to format manually
+--                         vim.keymap.set("n", "<leader>f", function()
+--                                 vim.lsp.buf.format({ async = true })
+--                         end, { buffer = bufnr, desc = "Format with null-ls" })
+--                 end
+--         end,
+--         sources = {
+--                 null_ls.builtins.completion.luasnip,
+--                 null_ls.builtins.completion.vsnip,
+--                 null_ls.builtins.diagnostics.actionlint,
+--                 null_ls.builtins.completion.nvim_snippets,
+--                 null_ls.builtins.completion.tags,
+--                 null_ls.builtins.formatting.black,
+--                 null_ls.builtins.diagnostics.mypy,
+--                 -- null_ls.builtins.diagnostics.pylint,
+--                 null_ls.builtins.formatting.clang_format,
+--                 null_ls.builtins.diagnostics.clazy,
+--                 null_ls.builtins.diagnostics.cppcheck,
+--                 null_ls.builtins.formatting.stylua,
+--                 null_ls.builtins.completion.spell,
+--                 null_ls.builtins.diagnostics.dotenv_linter,
+--         },
+-- })
