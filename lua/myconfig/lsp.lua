@@ -1,64 +1,92 @@
 -- LSP and Autocompletion Configuration
 
-local lspconfig = require("lspconfig")
-local util = require("lspconfig.util")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local on_attach = require("myconfig.on_attach").on_attach
-local flutterconfig = require("flutter-tools")
-local null_ls = require("null-ls")
--- Setup language servers with capabilities and on_attach
-lspconfig.pyright.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	root_dir = util.root_pattern(".git", "setup.py", "pyproject.toml", "requirements.txt", ".venv"),
+
+-- Lua LSP
+vim.lsp.enable("lua_ls", {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
+  settings = {
+    Lua = {
+      runtime = { version = "LuaJIT" },
+      diagnostics = { globals = { "vim" } },
+    },
+  },
 })
 
-lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+-- Python LSP
+vim.lsp.enable("pyright", {
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = {
+    { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
+    ".git",
+  },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+        typeCheckingMode = "basic",
+      },
+    },
+  },
 })
 
-lspconfig.clangd.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+-- C/C++ LSP
+vim.lsp.enable("clangd", {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--completion-style=detailed",
+    "--header-insertion=never",
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_markers = { { "compile_commands.json", "compile_flags.txt" }, ".git" },
+  init_options = {
+    clangdFileStatus = true,
+  },
 })
 
-lspconfig.dartls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	root_dir = util.root_pattern("pubspec.yaml"),
+-- Dart/Flutter LSP
+vim.lsp.enable("dartls", {
+  cmd = { "flutter", "language-server", "--protocol=lsp" },
+  filetypes = { "dart" },
+  root_markers = { "pubspec.yaml", ".git" },
+  init_options = {
+    closingLabels = true,
+    outline = true,
+    flutterOutline = true,
+  },
 })
 
--- Flutter Configuration
-flutterconfig.setup({
-	lsp = {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	},
+-- Diagnostics config
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true,
+  },
 })
 
-null_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	sources = {
-		-- Completions
-		null_ls.builtins.completion.luasnip,
-		null_ls.builtins.completion.vsnip,
-		null_ls.builtins.completion.nvim_snippets,
-		null_ls.builtins.completion.tags,
-		null_ls.builtins.completion.spell,
+-- Unified LspAttach autocmd
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local bufnr = ev.buf
 
-		-- Diagnostics
-		null_ls.builtins.diagnostics.actionlint,
-		null_ls.builtins.diagnostics.mypy,
-		-- null_ls.builtins.diagnostics.pylint, -- Optional
-		null_ls.builtins.diagnostics.clazy,
-		null_ls.builtins.diagnostics.cppcheck,
-		null_ls.builtins.diagnostics.dotenv_linter,
+    -- Format on save
+    local fmt = require("myconfig.on_attach")
+    fmt.format_on_save(client, bufnr)
 
-		-- Formatting
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.clang_format,
-		null_ls.builtins.formatting.stylua,
-	},
+    -- Completion
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
+      vim.opt.completeopt = { "menu", "menuone", "noinsert", "fuzzy", "popup" }
+      vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+
+      vim.keymap.set("i", "<C-Space>", function()
+        vim.lsp.completion.get()
+      end, { buffer = bufnr })
+    end
+  end,
 })

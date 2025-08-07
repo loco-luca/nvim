@@ -1,22 +1,21 @@
 -- on_attach
+--
+
 
 
 local M = {}
 
+function M.format_on_save(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+        local group = vim.api.nvim_create_augroup("LspFormat", { clear = false })
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+        vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
 
-function M.on_attach(client, bufnr)
-    if client.supports_method and client:supports_method("textDocument/formatting") then
-        -- Clear existing autocmds in this group for the buffer
-        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-
-        -- Create autocmd to format on save synchronously
         vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
+            group = group,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr, async = false })
+                vim.lsp.buf.format({ bufnr = bufnr })
             end,
         })
     end
