@@ -1,2 +1,11 @@
--- root configs call 
-require("myconfig")
+require("config.options")
+require("config.keymaps")
+require("config.lazy")
+require("plugins.colorscheme")
+require("plugins.telescope")
+require("plugins.treesitter")
+require("plugins.harpoon")
+require("plugins.tree")
+require("plugins.null_ls")
+
+
