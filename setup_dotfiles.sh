@@ -3,15 +3,7 @@ set -e
 
 OS="$(uname -s)"
 
-check_sudo() {
-  if [[ $EUID -ne 0 ]]; then
-    echo "Error: Please run this script with sudo or as root."
-    exit 1
-  fi
-}
-
 install_linux() {
-    check_sudo
     echo "=== Installing system dependencies on Linux ==="
     sudo apt update
     sudo apt install -y neovim nodejs npm python3 python3-pip ripgrep fzf git clangd lua-language-server dart-sdk
@@ -27,10 +19,36 @@ install_macos() {
 }
 
 install_arch() {
-    check_sudo
     echo "=== Installing system dependencies on Arch Linux ==="
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --noconfirm neovim nodejs npm python python-pip ripgrep fzf git clang lua-language-server dart-sdk
+
+    local packages=(
+      neovim nodejs npm python python-pip ripgrep fzf git clang
+      tree-sitter stylua lua clang-format black
+    )
+
+    for pkg in "${packages[@]}"; do
+        if ! pacman -Qs "^$pkg\$" > /dev/null; then
+            echo "Installing $pkg..."
+            sudo pacman -S --noconfirm "$pkg"
+        else
+            echo "$pkg already installed."
+        fi
+    done
+
+    if ! command -v lua-language-server >/dev/null 2>&1; then
+        echo "lua-language-server not found. Install it from AUR (e.g., with yay):"
+        echo "  yay -S lua-language-server"
+    else
+        echo "lua-language-server already installed."
+    fi
+
+    if ! command -v dart >/dev/null 2>&1; then
+        echo "dart-sdk not found. Install it from AUR (e.g., with yay):"
+        echo "  yay -S dart"
+    else
+        echo "dart-sdk already installed."
+    fi
 }
 
 echo "=== Detecting OS ==="
@@ -66,14 +84,6 @@ if ! command -v rust-analyzer >/dev/null; then
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
         cargo install rust-analyzer
     fi
-else
-    echo "rust-analyzer already installed."
-fi
-
-echo "=== Checking Neovim installation ==="
-if ! command -v nvim >/dev/null; then
-  echo "Error: Neovim is not installed or not in PATH. Please install it and rerun this script."
-  exit 1
 fi
 
 echo "=== Launching Neovim to install plugins ==="
