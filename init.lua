@@ -7,5 +7,4 @@ require("plugins.treesitter")
 require("plugins.harpoon")
 require("plugins.tree")
 require("plugins.null_ls")
-
-
+require("plugins.dap")
