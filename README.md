@@ -23,8 +23,8 @@ This repository contains my Neovim configuration and a setup script to quickly i
 ```bash
 git clone https://github.com/loco-luca/nvim.git ~/dotfiles
 
-2. Run the setup script to install dependencies and set up config:
-bash ~/dotfiles/nvim/setup_dotfiles.sh
-
-3. Launch Neovim:
-nvim
+# 2. Run the setup script to install dependencies and set up config:
+# bash ~/dotfiles/nvim/setup_dotfiles.sh
+#
+# 3. Launch Neovim:
+# nvim
