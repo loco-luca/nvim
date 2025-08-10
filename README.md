@@ -14,17 +14,17 @@ This repository contains my Neovim configuration and a setup script to quickly i
   - Install the Rust language server (`rust-analyzer`).
   - Launch Neovim in headless mode to sync plugins.
 
----
+## undercontruction 
 
-## Usage
-
-1. Clone this repo manually or via the script:
-
-```bash
-git clone https://github.com/loco-luca/nvim.git ~/dotfiles
-
-# 2. Run the setup script to install dependencies and set up config:
-# bash ~/dotfiles/nvim/setup_dotfiles.sh
-#
-# 3. Launch Neovim:
-# nvim
+<!-- ## Usage -->
+<!---->
+<!-- 1. Clone this repo manually or via the script: -->
+<!---->
+<!-- ```bash -->
+<!-- git clone https://github.com/loco-luca/nvim.git ~/dotfiles -->
+<!---->
+<!-- # 2. Run the setup script to install dependencies and set up config: -->
+<!-- # bash ~/dotfiles/nvim/setup_dotfiles.sh -->
+<!-- # -->
+<!-- # 3. Launch Neovim: -->
+<!-- # nvim -->
