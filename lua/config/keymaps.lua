@@ -32,7 +32,7 @@ end, { desc = "Create new file" })
 -- Toggle spell checking
 vim.keymap.set("n", "<leader>ts", function()
 	vim.opt.spell = not vim.opt.spell:get()
-	print("Spell check " .. (vim.opt.spell:get() and "enabled" or "disabled"))
+	print("Spell check " .. (vim.opt.spell and "enabled" or "disabled"))
 end, { desc = "Toggle Spell Check" })
 
 -- Open terminal (bottom split)
@@ -51,17 +51,17 @@ vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { desc = "LSP Hover" })
 
 -- Show current error
 vim.keymap.set("n", "<leader>e", function()
-	vim.diagnostic.open_float(0, { scope = "line" })
+	vim.diagnostic.open_float({ scope = "line" })
 end, { desc = "Show line diagnostics" })
 
 -- Go to next error
 vim.keymap.set("n", "<leader>ne", function()
-	vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+	vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next error" })
 
 -- Go to previous error
 vim.keymap.set("n", "<leader>pe", function()
-	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+	vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Previous error" })
 
 -- Better window navigation

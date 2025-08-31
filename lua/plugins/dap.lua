@@ -9,7 +9,7 @@ return {
                 -- ====================================
                 dap.adapters.lldb = {
                         type = "executable",
-                        command = "lldb-dap",
+                        command = vim.fn.expand("~/.opt/llvm/bin/lldb-dap"),
                         name = "lldb",
                 }
                 dap.configurations.cpp = {
