@@ -14,7 +14,7 @@ This repository contains my Neovim configuration and a setup script to quickly i
   - Install the Rust language server (`rust-analyzer`).
   - Launch Neovim in headless mode to sync plugins.
 
-## undercontruction 
+## Under construction 
 
 <!-- ## Usage -->
 <!---->
