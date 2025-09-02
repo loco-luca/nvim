@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- LazyVim completion engine to use.
+vim.g.lazyvim_cmp = "auto"
+
 -- File Explorer
 vim.keymap.set("n", "<leader>cd", "<cmd>Ex<CR>", { desc = "File Explorer" })
 

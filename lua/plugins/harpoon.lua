@@ -22,6 +22,8 @@ end
 return {
 
 	"ThePrimeagen/harpoon",
+	priority = 1000,
+	lazy = false,
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()

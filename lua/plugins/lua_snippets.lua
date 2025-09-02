@@ -2,6 +2,8 @@
 return {
 	{
 		"L3MON4D3/LuaSnip",
+		priority = 1000,
+		lazy = false,
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/nvim-cmp",

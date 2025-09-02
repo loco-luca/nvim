@@ -27,10 +27,9 @@ return {
 		config = function()
 			require("tokyonight").setup({
 				-- Uncomment to set this as your theme
-				-- vim.cmd("colorscheme tokyonight-night"),
+				transparent = true,
 			})
-			--
-			enable_tranparency()
+			vim.cmd("colorscheme tokyonight-night")
 		end,
 	},
 	{
@@ -52,7 +51,7 @@ return {
 		config = function()
 			-- comment
 			require("dracula").setup({
-				vim.cmd("colorscheme dracula"),
+				-- vim.cmd("colorscheme dracula"),
 			})
 			-- enable_tranparency()
 		end,
@@ -74,7 +73,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({})
+			require("catppuccin").setup()
 			-- vim.cmd.colorscheme("catppuccin-latte")
 
 			enable_tranparency()
@@ -86,7 +85,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		opts = {
-			theme = "rose-pine",
+			theme = "tokyonight",
 		},
 	},
 }

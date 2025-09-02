@@ -2,6 +2,8 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		priority = 1000,
+		lazy = false,
 		config = function()
 			vim.diagnostic.config({
 				float = {

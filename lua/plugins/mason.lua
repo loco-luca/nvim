@@ -2,6 +2,8 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		priority = 1000,
+		lazy = false,
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",

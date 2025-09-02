@@ -1,6 +1,8 @@
 return {
 	"nvimtools/none-ls.nvim",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	priority = 1000,
+	lazy = false,
+	dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 	config = function()
 		local null_ls = require("null-ls")
 
@@ -16,11 +18,18 @@ return {
 		})
 
 		-- -- Format on save for all specified filetypes
-	vim.api.nvim_create_autocmd("BufWritePre", {
+		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = { "*.lua", "*.py", "*.rs", "*.dart" },
 			callback = function()
-				vim.lsp.buf.format({ async = true })
+				vim.lsp.buf.format({ async = false })
 			end,
 		})
+		-- -- rename variables across all buffers
+		-- vim.api.nvim_create_autocmd("LspAttach", {
+		-- 	callback = function(ev)
+		-- 		local opts = { buffer = ev.buf, desc = "LSP Rename" }
+		-- 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		-- 	end,
+		-- })
 	end,
 }
