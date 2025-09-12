@@ -13,7 +13,6 @@ return {
 				"yaml",
 				"c",
 				"cpp",
-				"dart",
 			},
 			highlight = { enable = true },
 			indent = { enable = true },

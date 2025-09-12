@@ -1,3 +1,4 @@
+-- lsp
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -10,13 +11,10 @@ return {
 				opts = {
 					library = {
 
-						{ path = "${3rd}/luc/library", words = { "vim%.uv" } },
+						{ path = "${3rd}/luc/library", words = { "vim%.uv", "ibl.%config" } },
 					},
 				},
 			},
 		},
-		config = function()
-			require("lspconfig").lua_ls.setup({})
-		end,
 	},
 }

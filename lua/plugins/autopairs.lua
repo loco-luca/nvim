@@ -12,7 +12,6 @@ return {
 				rust = { "string" },
 				python = { "string" },
 				cpp = { "string" },
-				dart = { "string" },
 				c = { "string" },
 			},
 			disable_filetype = { "TelescopePrompt", "vim" },

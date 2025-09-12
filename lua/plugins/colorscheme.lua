@@ -40,7 +40,6 @@ return {
 		config = function()
 			-- comment
 			require("vscode").setup({})
-			enable_tranparency()
 		end,
 	},
 	{
@@ -53,7 +52,6 @@ return {
 			require("dracula").setup({
 				-- vim.cmd("colorscheme dracula"),
 			})
-			-- enable_tranparency()
 		end,
 	},
 	{
@@ -79,6 +77,28 @@ return {
 			enable_tranparency()
 		end,
 	},
+
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
+		config = function()
+			require("gruvbox").setup({
+				terminal_colors = true, -- enable Neovim terminal colors
+				undercurl = true,
+				underline = true,
+				bold = true,
+				italic = {
+					strings = true,
+					emphasis = true,
+					comments = true,
+					operators = false,
+					folds = true,
+				},
+				transparent = true,
+			})
+		end,
+	},
+
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {

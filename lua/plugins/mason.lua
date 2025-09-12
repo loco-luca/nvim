@@ -7,6 +7,7 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
+			"stevearc/dressing.nvim",
 		},
 
 		config = function()
@@ -27,6 +28,7 @@ return {
 				},
 
 				handlers = {
+					-- Lua LSP with custom globals
 					["lua_ls"] = function()
 						require("lspconfig").lua_ls.setup({
 							capabilities = capabilities,
@@ -39,8 +41,7 @@ return {
 							},
 						})
 					end,
-
-					-- Default handler for all other LSPs
+					-- Default handler for other LSPs
 					function(server_name)
 						require("lspconfig")[server_name].setup({
 							capabilities = capabilities,
