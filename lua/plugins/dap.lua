@@ -11,7 +11,7 @@ return {
 		-- ====================================
 		dap.adapters.lldb = {
 			type = "executable",
-			command = vim.fn.expand("~/.opt/llvm/bin/lldb-dap"),
+			command = "/opt/homebrew/opt/llvm/bin/lldb-dap",
 			name = "lldb",
 		}
 		dap.configurations.cpp = {
@@ -46,6 +46,9 @@ return {
 				console = "integratedTerminal",
 			},
 		}
+
+		-- Add configuration for snacks_dashboard (Python)
+		dap.configurations.snacks_dashboard = dap.configurations.python
 
 		-- ====================================
 		-- Dart (dart debug adapter) - Only if dart is available
@@ -85,22 +88,17 @@ return {
 		}
 
 		-- ====================================
-		-- Lua (local Neovim instance debug)
+		-- Lua (run script directly instead of attach)
 		-- ====================================
 		dap.adapters.nlua = function(callback, config)
-			callback({ type = "server", host = config.host, port = config.port })
+			callback({ type = "executable", command = "lua", args = { "-e", config.program } })
 		end
 		dap.configurations.lua = {
 			{
 				type = "nlua",
-				request = "attach",
-				name = "Attach to running Neovim instance",
-				host = function()
-					return "127.0.0.1"
-				end,
-				port = function()
-					return tonumber(vim.fn.input("Port: ", "8086"))
-				end,
+				request = "launch",
+				name = "Run Lua file",
+				program = "${file}",
 			},
 		}
 
