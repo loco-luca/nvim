@@ -67,6 +67,8 @@ vim.keymap.set("n", "<leader>pe", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Previous error" })
 
+--Zen mode
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
 -- Better window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
