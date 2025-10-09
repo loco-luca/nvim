@@ -21,9 +21,5 @@ return {
 				update_cwd = true,
 			},
 		})
-
-		-- Keybinding to toggle NvimTree
-		vim.keymap.set("n", "<leader>b", "<cmd>:NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
-		vim.keymap.set("n", "<leader>tm", "<cmd>:NvimTreeOpen<CR>", { desc = "Focus on NvimTree" })
 	end,
 }

@@ -67,6 +67,9 @@ vim.keymap.set("n", "<leader>pe", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Previous error" })
 
+-- Keybinding to toggle NvimTree
+vim.keymap.set("n", "<leader>b", "<cmd>:NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
+vim.keymap.set("n", "<leader>tm", "<cmd>:NvimTreeOpen<CR>", { desc = "Focus on NvimTree" })
 --Zen mode
 vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
 -- Better window navigation
@@ -82,3 +85,6 @@ vim.keymap.set("n", "<C-w>", "<cmd>resize +2<CR>", { desc = "Increase window hei
 vim.keymap.set("n", "<C-s>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-a>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-d>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+-- GitSigns commands ---
+
+-- Gitsign commands ---

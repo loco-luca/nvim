@@ -1,5 +1,15 @@
--- Lua snippet
 return {
+	{
+		"folke/lazydev.nvim",
+		priority = 1000,
+		lazy = false,
+		ft = "lua",
+		opts = {
+			library = {
+				{ path = "${3rd}/luc/library", words = { "vim%.uv", "ibl.%config" } },
+			},
+		},
+	},
 	{
 		"L3MON4D3/LuaSnip",
 		priority = 1000,

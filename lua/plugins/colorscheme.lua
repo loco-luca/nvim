@@ -29,7 +29,7 @@ return {
 				-- Uncomment to set this as your theme
 				transparent = true,
 			})
-			vim.cmd("colorscheme tokyonight-night")
+			-- vim.cmd("colorscheme tokyonight-night")
 		end,
 	},
 	{
@@ -62,8 +62,9 @@ return {
 		config = function()
 			require("onedark").setup({
 				style = "dark",
+				transparent = true,
 			})
-			enable_tranparency()
+			vim.cmd("colorscheme onedark")
 		end,
 	},
 	{
