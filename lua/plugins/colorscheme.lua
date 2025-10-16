@@ -78,6 +78,19 @@ return {
 			enable_tranparency()
 		end,
 	},
+	{
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
+		priority = 1000,
+		config = function()
+			require("kanagawa").setup({
+
+				-- vim.cmd.colorscheme("catppuccin-latte")
+				transparent = true,
+				vim.cmd("colorscheme kanagawa-wave"),
+			})
+		end,
+	},
 
 	{
 		"ellisonleao/gruvbox.nvim",
