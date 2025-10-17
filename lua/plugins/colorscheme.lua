@@ -84,8 +84,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("kanagawa").setup({
-
-				-- vim.cmd.colorscheme("catppuccin-latte")
+				terminalColors = true,
 				transparent = true,
 				vim.cmd("colorscheme kanagawa-wave"),
 			})
