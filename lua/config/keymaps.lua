@@ -8,6 +8,13 @@ vim.g.lazyvim_cmp = "auto"
 -- File Explorer
 vim.keymap.set("n", "<leader>cd", "<cmd>Ex<CR>", { desc = "File Explorer" })
 
+-- Folding keymaps ---
+vim.keymap.set("n", "<leader>oaf", "zR", { desc = "Open all folds" })
+vim.keymap.set("n", "<leader>caf", "zM", { desc = "Close all folds" })
+vim.keymap.set("n", "<leader>of", "zo", { desc = "Open one fold under cursor" })
+vim.keymap.set("n", "<leader>cf", "zc", { desc = "Close one fold under cursor" })
+vim.keymap.set("n", "<leader>tf", "za", { desc = "Toggle fold under cursor" })
+
 -- Create a directory
 vim.keymap.set("n", "<leader>md", function()
 	vim.ui.input({ prompt = "Folder name: " }, function(folder)
@@ -84,8 +91,4 @@ vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horiz
 vim.keymap.set("n", "<C-w>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<C-s>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-a>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-d>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
--- GitSigns commands ---
-
--- Gitsign commands ---
---
+vim.keymap.set("n", "<C-d>", "<cmd>vertical resize +2<CR>", { desc = "Increase window with" })
