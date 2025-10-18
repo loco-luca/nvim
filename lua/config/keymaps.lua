@@ -88,3 +88,4 @@ vim.keymap.set("n", "<C-d>", "<cmd>vertical resize +2<CR>", { desc = "Increase w
 -- GitSigns commands ---
 
 -- Gitsign commands ---
+--

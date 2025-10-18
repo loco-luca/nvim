@@ -30,5 +30,12 @@ return {
 				vim.lsp.buf.format({ async = false })
 			end,
 		})
+		-- Disable autoformat for lua files
+		vim.api.nvim_create_autocmd({ "FileType" }, {
+			pattern = { "*.lua", "*.py", "*.rs", "*.dart" },
+			callback = function()
+				vim.b.autoformat = false
+			end,
+		})
 	end,
 }
