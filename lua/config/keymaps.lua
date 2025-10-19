@@ -39,6 +39,15 @@ vim.keymap.set("n", "<leader>nf", function()
 	end)
 end, { desc = "Create new file" })
 
+-- Refactoring commands
+vim.keymap.set("x", "<leader>re", ":Refactor extract ")
+vim.keymap.set("x", "<leader>rf", ":Refactor extract_to_file ")
+vim.keymap.set("x", "<leader>rv", ":Refactor extract_var ")
+vim.keymap.set({ "n", "x" }, "<leader>ri", ":Refactor inline_var")
+vim.keymap.set("n", "<leader>rI", ":Refactor inline_func")
+vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
+vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
+
 -- Toggle spell checking
 vim.keymap.set("n", "<leader>ts", function()
 	vim.opt.spell = not vim.opt.spell:get()
@@ -77,8 +86,10 @@ end, { desc = "Previous error" })
 -- Keybinding to toggle NvimTree
 vim.keymap.set("n", "<leader>b", "<cmd>:NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
 vim.keymap.set("n", "<leader>tm", "<cmd>:NvimTreeOpen<CR>", { desc = "Focus on NvimTree" })
+
 --Zen mode
 vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
+
 -- Better window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
