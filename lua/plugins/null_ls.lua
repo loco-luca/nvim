@@ -17,9 +17,6 @@ return {
 
 				-- Python
 				null_ls.builtins.formatting.black,
-
-				-- Dart/Flutter
-				null_ls.builtins.formatting.dart_format,
 			},
 		})
 

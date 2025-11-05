@@ -8,13 +8,6 @@ vim.g.lazyvim_cmp = "auto"
 -- File Explorer
 vim.keymap.set("n", "<leader>cd", "<cmd>Ex<CR>", { desc = "File Explorer" })
 
--- Folding keymaps ---
-vim.keymap.set("n", "<leader>oaf", "zR", { desc = "Open all folds" })
-vim.keymap.set("n", "<leader>caf", "zM", { desc = "Close all folds" })
-vim.keymap.set("n", "<leader>of", "zo", { desc = "Open one fold under cursor" })
-vim.keymap.set("n", "<leader>cf", "zc", { desc = "Close one fold under cursor" })
-vim.keymap.set("n", "<leader>tf", "za", { desc = "Toggle fold under cursor" })
-
 -- Create a directory
 vim.keymap.set("n", "<leader>md", function()
 	vim.ui.input({ prompt = "Folder name: " }, function(folder)
