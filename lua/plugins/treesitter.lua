@@ -16,7 +16,7 @@ return {
 				"c",
 				"cpp",
 			},
-			highlight = { enable = true },
+			highlight = { enable = true, additional_vim_regex_highlighting = false },
 			indent = { enable = true },
 			auto_install = true,
 			sync_install = true,
