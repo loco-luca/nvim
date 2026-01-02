@@ -41,6 +41,42 @@ return {
 				},
 			}
 			vim.lsp.enable("lua_ls") -- Activate lsp
+			vim.lsp.config["tsserver"] = {
+				cmd = { "typescript-language-server", "--stdio" },
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"javascript.jsx",
+				},
+				root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+				single_file_support = true,
+			}
+			vim.lsp.enable("tsserver")
+			-- Html lsp
+			vim.lsp.config["html"] = {
+				cmd = { "vscode-html-language-server", "--stdio" },
+				capabilities = capabilities,
+				filetypes = { "html" },
+				root_markers = { ".git" },
+			}
+			vim.lsp.enable("html")
+			-- CSS lsp
+			vim.lsp.config["cssls"] = {
+				cmd = { "vscode-css-language-server", "--stdio" },
+				capabilities = capabilities,
+				filetypes = { "css", "scss", "less" },
+				root_markers = { ".git" },
+				settings = {
+					css = { validate = true },
+					scss = { validate = true },
+					less = { validate = true },
+				},
+			}
+
+			vim.lsp.enable("cssls")
 		end,
 	},
 }
