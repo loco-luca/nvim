@@ -17,14 +17,64 @@ return {
 				root_markers = { ".git", "pyproject.toml" },
 			}
 			vim.lsp.enable("pyright") -- Activate lsp
-			-- Rust
+			-- C / C++
+			vim.lsp.config["clangd"] = {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--completion-style=detailed",
+					"--header-insertion=iwyu",
+				},
+				capabilities = capabilities,
+				filetypes = { "c", "cpp", "objc", "objcpp" },
+				root_markers = {
+					".git",
+					"compile_commands.json",
+					"compile_flags.txt",
+					"CMakeLists.txt",
+				},
+			}
+
+			vim.lsp.enable("clangd")
+			---- Rust
 			vim.lsp.config["rust_analyzer"] = {
 				cmd = { "rust-analyzer" },
 				capabilities = capabilities,
 				filetypes = { "rust" },
 				root_markers = { ".git", "Cargo.toml" },
+
+				settings = {
+					["rust-analyzer"] = {
+						cargo = {
+							allFeatures = true,
+						},
+
+						checkOnSave = {
+							command = "clippy",
+						},
+
+						diagnostics = {
+							enable = true,
+						},
+
+						inlayHints = {
+							typeHints = true,
+							parameterHints = true,
+							chainingHints = true,
+						},
+
+						completion = {
+							autoimport = {
+								enable = true,
+							},
+						},
+					},
+				},
 			}
-			vim.lsp.enable("rust_analyzer") -- Activate lsp
+
+			vim.lsp.enable("rust_analyzer")
+
 			-- Lua
 			vim.lsp.config["lua_ls"] = {
 				cmd = { "lua-language-server" },
@@ -41,6 +91,8 @@ return {
 				},
 			}
 			vim.lsp.enable("lua_ls") -- Activate lsp
+
+			-- Typescript
 			vim.lsp.config["tsserver"] = {
 				cmd = { "typescript-language-server", "--stdio" },
 				filetypes = {
