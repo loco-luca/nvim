@@ -50,7 +50,8 @@ return {
 							allFeatures = true,
 						},
 
-						checkOnSave = {
+						checkOnSave = true,
+						check = {
 							command = "clippy",
 						},
 

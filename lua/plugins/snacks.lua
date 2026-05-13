@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global
+---@diagnostic disable: undefined-doc-name
 return {
 	{
 		"folke/snacks.nvim",
@@ -7,7 +9,7 @@ return {
 			dashboard = {
 				preset = {
 					pick = function(cmd, opts)
-						return LazyVim.pick(cmd, opts)()
+						return require("lazyvim.util").pick(cmd, opts)()
 					end,
 					header = [[
 	 ██████   █████ ██████████    ███████    █████   █████ █████ ██████   ██████

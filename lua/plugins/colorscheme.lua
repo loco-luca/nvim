@@ -64,17 +64,17 @@ return {
 				style = "dark",
 				transparent = true,
 			})
-			vim.cmd("colorscheme onedark")
+			-- vim.cmd("colorscheme onedark")
 		end,
 	},
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+		lazy = false,
 		config = function()
 			require("catppuccin").setup()
-			-- vim.cmd.colorscheme("catppuccin-latte")
-
+			vim.cmd("colorscheme catppuccin-frappe")
 			enable_tranparency()
 		end,
 	},
@@ -86,7 +86,7 @@ return {
 			require("kanagawa").setup({
 				terminalColors = true,
 				transparent = true,
-				vim.cmd("colorscheme kanagawa-wave"),
+				-- vim.cmd("colorscheme kanagawa-wave"),
 			})
 		end,
 	},
@@ -108,6 +108,7 @@ return {
 					folds = true,
 				},
 				transparent = true,
+				-- vim.cmd("colorscheme gruvbox"),
 			})
 		end,
 	},
