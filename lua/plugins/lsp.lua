@@ -25,6 +25,10 @@ return {
 					"--clang-tidy",
 					"--completion-style=detailed",
 					"--header-insertion=iwyu",
+					"--query-driver=/usr/bin/clang++,/usr/local/bin/clang++",
+				},
+				init_options = {
+					fallbackFlags = { "-std=c++23", "-stdlib=libc++" },
 				},
 				capabilities = capabilities,
 				filetypes = { "c", "cpp", "objc", "objcpp" },
