@@ -60,6 +60,10 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true, de
 
 -- LSP hover
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { desc = "LSP Hover" })
+-- cpp code formator
+vim.keymap.set("n", "<leader>cf", function()
+	vim.lsp.buf.format({ async = true })
+end, { desc = "Format file" })
 
 -- Show current error
 vim.keymap.set("n", "<leader>e", function()

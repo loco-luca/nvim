@@ -39,7 +39,9 @@ return {
 		lazy = false,
 		config = function()
 			-- comment
-			require("vscode").setup({})
+			require("vscode").setup({
+				vim.cmd("colorscheme vscode"),
+			})
 		end,
 	},
 	{
@@ -74,7 +76,7 @@ return {
 		lazy = false,
 		config = function()
 			require("catppuccin").setup()
-			vim.cmd("colorscheme catppuccin-frappe")
+			--vim.cmd("colorscheme catppuccin-frappe")
 			enable_tranparency()
 		end,
 	},

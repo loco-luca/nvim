@@ -22,14 +22,14 @@ return {
 
 		-- Format on save for all specified filetypes
 		vim.api.nvim_create_autocmd("BufWritePre", {
-			pattern = { "*.lua", "*.py", "*.rs", "*.dart" },
+			pattern = { "*.lua", "*.py", "*.rs", "*.dart", "*.cpp", "*.c" },
 			callback = function()
 				vim.lsp.buf.format({ async = false })
 			end,
 		})
 		-- Disable autoformat for lua files
 		vim.api.nvim_create_autocmd({ "FileType" }, {
-			pattern = { "*.lua", "*.py", "*.rs", "*.dart" },
+			pattern = { "*.lua", "*.py", "*.rs", "*.dart", "*.cpp", "*.c" },
 			callback = function()
 				vim.b.autoformat = false
 			end,

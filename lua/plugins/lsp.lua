@@ -17,6 +17,7 @@ return {
 				root_markers = { ".git", "pyproject.toml" },
 			}
 			vim.lsp.enable("pyright") -- Activate lsp
+
 			-- C / C++
 			vim.lsp.config["clangd"] = {
 				cmd = {
@@ -41,6 +42,7 @@ return {
 			}
 
 			vim.lsp.enable("clangd")
+
 			---- Rust
 			vim.lsp.config["rust_analyzer"] = {
 				cmd = { "rust-analyzer" },
@@ -112,6 +114,7 @@ return {
 				single_file_support = true,
 			}
 			vim.lsp.enable("tsserver")
+
 			-- Html lsp
 			vim.lsp.config["html"] = {
 				cmd = { "vscode-html-language-server", "--stdio" },
@@ -120,6 +123,7 @@ return {
 				root_markers = { ".git" },
 			}
 			vim.lsp.enable("html")
+
 			-- CSS lsp
 			vim.lsp.config["cssls"] = {
 				cmd = { "vscode-css-language-server", "--stdio" },
@@ -134,6 +138,19 @@ return {
 			}
 
 			vim.lsp.enable("cssls")
+
+			-- zig lsp
+			vim.lsp.config["zig"] = {
+				cmd = { "zls" },
+				capabilities = capabilities,
+				filetypes = { "zig" },
+				root_markers = {
+					".git",
+					"build.zig",
+					"build.zig.zon",
+				},
+			}
+			vim.lsp.enable("zig")
 		end,
 	},
 }
