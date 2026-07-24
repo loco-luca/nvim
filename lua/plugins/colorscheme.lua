@@ -40,7 +40,7 @@ return {
 		config = function()
 			-- comment
 			require("vscode").setup({
-				vim.cmd("colorscheme vscode"),
+				-- vim.cmd("colorscheme vscode"),
 			})
 		end,
 	},
@@ -52,7 +52,7 @@ return {
 		config = function()
 			-- comment
 			require("dracula").setup({
-				-- vim.cmd("colorscheme dracula"),
+				vim.cmd("colorscheme dracula"),
 			})
 		end,
 	},

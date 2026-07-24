@@ -58,12 +58,11 @@ vim.keymap.set("n", "<leader>ct", "<cmd>close<CR>", { desc = "Close terminal" })
 -- Escape terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Exit terminal mode" })
 
--- LSP hover
-vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { desc = "LSP Hover" })
--- cpp code formator
-vim.keymap.set("n", "<leader>cf", function()
-	vim.lsp.buf.format({ async = true })
-end, { desc = "Format file" })
+-- -- cpp code formator
+-- vim.keymap.set("n", "<leader>cf", function()
+-- 	vim.lsp.buf.format({ async = true })
+-- end, { desc = "Format file" })
+--
 
 -- Show current error
 vim.keymap.set("n", "<leader>e", function()
@@ -72,20 +71,17 @@ end, { desc = "Show line diagnostics" })
 
 -- Go to next error
 vim.keymap.set("n", "<leader>ne", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+	vim.diagnostic.get_next({ count = 1, float = true })
 end, { desc = "Next error" })
 
 -- Go to previous error
 vim.keymap.set("n", "<leader>pe", function()
-	vim.diagnostic.jump({ count = -1, float = true })
+	vim.diagnostic.get_prev({ count = -1, float = true })
 end, { desc = "Previous error" })
 
 -- Keybinding to toggle NvimTree
 vim.keymap.set("n", "<leader>b", "<cmd>:NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
 vim.keymap.set("n", "<leader>tm", "<cmd>:NvimTreeOpen<CR>", { desc = "Focus on NvimTree" })
-
---Zen mode
-vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
 
 -- Better window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
