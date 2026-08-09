@@ -13,3 +13,4 @@ vim.opt.clipboard = "unnamedplus"
 -- Enable syntax and filetype detection
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
+vim.cmd("set completeopt+=noselect")
