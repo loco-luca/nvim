@@ -17,6 +17,7 @@ return {
 			"html",
 			"css",
 			"bash",
+			"dart",
 			"zig",
 		}
 		for _, server in ipairs(servers) do
