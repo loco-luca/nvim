@@ -6,17 +6,22 @@ return function(capabilities)
 			"--clang-tidy",
 			"--completion-style=detailed",
 			"--header-insertion=iwyu",
-			"--query-driver=/usr/bin/clang++",
+			"--query-driver=/usr/bin/gcc,/usr/bin/clang",
 		},
 		init_options = {
-			fallbackFlags = { "-std=c++23", "-stdlib=libc++" },
+			fallbackFlags = {
+				"-std=c89",
+				"-Wno-old-style-definition",
+				"-Wno-deprecated-non-prototype",
+			},
 		},
 		capabilities = capabilities,
-		filetypes = { "cpp", "objcpp" },
+		filetypes = { "c" },
 		root_markers = {
 			".git",
 			"compile_commands.json",
 			"compile_flags.txt",
+			"Makefile",
 			"CMakeLists.txt",
 		},
 	}

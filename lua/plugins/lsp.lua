@@ -10,6 +10,7 @@ return {
 
 		local servers = {
 			"python",
+			"c",
 			"cpp",
 			"rust",
 			"lua_ls",
