@@ -114,12 +114,23 @@ return {
 			})
 		end,
 	},
+	{
+		"iruzo/matrix-nvim",
+		name = "matrix",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			transparent = true
+
+			-- vim.cmd.colorscheme("matrix") -- Added: Activates 70s matrix theme
+		end,
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-		},
+		}, -- statusline
 		opts = {
 			theme = "tokyonight",
 		},
