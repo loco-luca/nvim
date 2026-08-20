@@ -10,8 +10,7 @@ return {
 
 		local servers = {
 			"python",
-			"c",
-			"cpp",
+			"clangd", -- for c and cpp
 			"rust",
 			"lua_ls",
 			"typescript",

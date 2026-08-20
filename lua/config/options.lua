@@ -10,6 +10,10 @@ vim.opt.writebackup = false -- Don't create backup before writing
 vim.opt.swapfile = false
 vim.opt.updatetime = 300
 vim.opt.clipboard = "unnamedplus"
+vim.g.deprecation_warnings = false
+vim.diagnostic.config({
+	update_in_insert = true, -- Show errors live while typing
+})
 -- Enable syntax and filetype detection
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
