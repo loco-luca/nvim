@@ -41,6 +41,7 @@ return {
 			-- comment
 			require("vscode").setup({
 				-- vim.cmd("colorscheme vscode"),
+				transparent = true,
 			})
 		end,
 	},
@@ -52,7 +53,8 @@ return {
 		config = function()
 			-- comment
 			require("dracula").setup({
-				vim.cmd("colorscheme dracula"),
+				-- vim.cmd("colorscheme dracula"),
+				transparent = true,
 			})
 		end,
 	},
@@ -75,9 +77,11 @@ return {
 		priority = 1000,
 		lazy = false,
 		config = function()
-			require("catppuccin").setup()
+			require("catppuccin").setup({
+				transparent = true,
+			})
 			--vim.cmd("colorscheme catppuccin-frappe")
-			enable_tranparency()
+			-- enable_tranparency()
 		end,
 	},
 	{
@@ -120,8 +124,9 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			transparent = true
-
+			vim.g.matrix_disable_background = true
+			vim.g.matrix_contrast = true
+			vim.g.matrix_borders = true
 			-- vim.cmd.colorscheme("matrix") -- Added: Activates 70s matrix theme
 		end,
 	},
