@@ -130,6 +130,16 @@ return {
 			-- vim.cmd.colorscheme("matrix") -- Added: Activates 70s matrix theme
 		end,
 	},
+	{
+		"dasupradyumna/midnight.nvim",
+		name = "midnight",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("midnight").setup({})
+			vim.cmd.colorscheme("midnight")
+		end,
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
