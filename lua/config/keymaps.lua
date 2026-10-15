@@ -59,10 +59,12 @@ vim.keymap.set("n", "<leader>ct", "<cmd>close<CR>", { desc = "Close terminal" })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Exit terminal mode" })
 
 -- -- cpp code formator
--- vim.keymap.set("n", "<leader>cf", function()
--- 	vim.lsp.buf.format({ async = true })
--- end, { desc = "Format file" })
---
+vim.keymap.set("n", "<leader>cf", function()
+	vim.lsp.buf.format({ async = true })
+end, { desc = "Format file" })
+
+-- Escape terminal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Exit terminal mode" })
 
 -- Show current error
 vim.keymap.set("n", "<leader>e", function()
@@ -89,10 +91,12 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
--- Splitting & Resizing
+-- Splitting windows
 vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
-vim.keymap.set("n", "<C-w>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-s>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-a>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-d>", "<cmd>vertical resize +2<CR>", { desc = "Increase window with" })
+
+-- Resize using Control + Shift + Arrow keys (No terminal config needed!)
+vim.keymap.set("n", "<C-S-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-S-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-S-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-S-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })

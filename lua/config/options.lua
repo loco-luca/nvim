@@ -18,3 +18,13 @@ vim.diagnostic.config({
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 vim.cmd("set completeopt+=noselect")
+
+-- Block arrow keys in Normal, Insert, and Visual modes
+local modes = { "n", "i", "v" }
+local arrows = { "<Up>", "<Down>", "<Left>", "<Right>" }
+
+for _, mode in ipairs(modes) do
+	for _, arrow in ipairs(arrows) do
+		vim.keymap.set(mode, arrow, "<nop>", { silent = true })
+	end
+end
