@@ -11,6 +11,8 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		-- Allow java lsp to do completion from nvim-cmp
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		cmp.setup({
 			snippet = {
@@ -42,5 +44,7 @@ return {
 				{ name = "path" },
 			}),
 		})
+		-- Calling java lsp from config.lsp.java
+		require("config.lsp.java")(capabilities)
 	end,
 }

@@ -12,6 +12,7 @@ return {
 			"python",
 			"clangd", -- for c and cpp
 			"rust",
+			"java",
 			"lua_ls",
 			"typescript",
 			"html",
